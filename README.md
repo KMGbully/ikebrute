@@ -3,7 +3,10 @@ Simply runs through a wordlist of default/common group IDs and parses each hash 
 </br></br>
 Usage:  ./ikebrute.sh [TARGET IP]
 </br></br>
-Requirements:  ike-scan, psk-crack, and /usr/share/wordlists/rockyou.txt
+Requirements:  </br>
+1.  ike-scan</br>
+2.  psk-crack</br>
+3.  rockyou wordlist locate at /usr/share/wordlists/rockyou.txt
 </br></br>
 Future Updates:   </br>
 1. cat hash files and check for a null value (remove those that are null) </br>
