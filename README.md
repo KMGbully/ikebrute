@@ -9,9 +9,8 @@ Requirements:  </br>
 3.  rockyou wordlist located at /usr/share/wordlists/rockyou.txt
 </br></br>
 Future Updates:   </br>
-1. cat hash files and check for a null value (remove those that are null) </br>
-2.  Add bruteforce mode to psk-crack for cracking hashes</br>
-3.  Parse output file for successful cracks
+1.  cat hash files and check for a null value (remove those that are null) </br>
+2.  Add bruteforce mode to psk-crack for cracking hashes
 </br></br>
 Kevin Gilstrap </br>
 Sungard Availability Services, Lead Sr. Penetration Tester </br>
