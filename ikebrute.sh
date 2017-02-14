@@ -45,6 +45,7 @@ for x in $(ls | grep hash); do
 done
 # Parsing results
 cat pskcrack.out | grep -v "Running" | grep -v "Ending" | grep -v "Starting" | tee -a ikebrute-results.txt
+# Cleanup files
 echo "[*]  Performing cleanup"
 rm -rf /opt/ikebrute/*.hash
 rm -rf pskcrack.out
