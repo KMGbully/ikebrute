@@ -5,9 +5,10 @@ Usage:  ./ikebrute.sh [TARGET IP]
 </br></br>
 Requirements:  ike-scan, psk-crack, and /usr/share/wordlists/rockyou.txt
 </br></br>
-Future Updates:   1. cat hash files and check for a null value (remove those that are null) </br>
-                  2.  Add bruteforce mode to psk-crack for cracking hashes</br>
-                  3.  Parse output file for successful cracks
+Future Updates:   </br>
+1. cat hash files and check for a null value (remove those that are null) </br>
+2.  Add bruteforce mode to psk-crack for cracking hashes</br>
+3.  Parse output file for successful cracks
 </br></br>
 Kevin Gilstrap </br>
 Sungard Availability Services, Lead Sr. Penetration Tester </br>
