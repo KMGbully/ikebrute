@@ -1,5 +1,5 @@
 # ikebrute v1.0
-Simply runs through a wordlist of default/common group IDs and parses each hash to a separate file.  Then it runs through the hashes with psk-crack using the rockyou wordlist.
+Simply runs through a wordlist of default/common group IDs and parses each hash to a separate file. Then it runs through the hashes with psk-crack using a wordlist mangled with john and hobo64.rule 
 </br></br>
 Usage:  ./ikebrute.sh [TARGET IP]
 </br></br>
