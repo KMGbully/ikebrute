@@ -6,7 +6,7 @@
 #
 # Kevin Gilstrap, Lead Sr. Penetration Tester
 # Sungard Availability Services, Information Security Consulting
-
+#
 # Checks for root
 if [ "$(whoami)" != "root" ]; then
 	clear	
@@ -27,6 +27,8 @@ if [ -z "$aggressive" ]; then
 	echo "Aggressive Mode is not enabled"
 	exit 0
 fi
+# Cleans previous results
+rm -rf /opt/ikebrute/ikebrute-results.txt
 # Captures hashes
 clear
 echo "[*]  Capturing hashes"
