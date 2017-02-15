@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# ikebrute v1.0
-# Simply runs through a wordlist of default/common group IDs and parses each hash to a separate file to be cracked offline"
+# ikebrute v1.1
+# Simply runs through a wordlist of default/common group IDs and parses each hash to a separate file.
+# Then it runs through the hashes with psk-crack using a wordlist mangled with john and hobo64.rule 
+#
 # Kevin Gilstrap, Lead Sr. Penetration Tester
 # Sungard Availability Services, Information Security Consulting
 
@@ -14,7 +16,7 @@ fi
 # Checks for Usage
 if [ -z "$1" ]; then
 	clear
-        echo "echo [*]  Usage:  sh ikebrute.sh [TARGET IP]"
+        echo "echo [*]  Usage:  sh ikebrute.sh [TARGET IP] [/path/to/wordlist]"
 exit 0
 fi
 # Checks to verify aggressive mode is enabled
@@ -42,7 +44,11 @@ echo "[*]  Cracking hashes"
 for x in $(ls | grep hash); do
 	echo Testing: $x
 	#john --rules=/opt/ikebrute/besthobo64.rule --wordlist=/opt/ikebrute/psk-crack-dictionary --stdout | psk-crack -d - $x
-	psk-crack $x --dictionary=/opt/ikebrute/psk-crack-dictionary | tee -a pskcrack.out
+	if [ -z "$2" ]; then
+		psk-crack $x --dictionary=/opt/ikebrute/psk-crack-dictionary | tee -a pskcrack.out
+	else
+		psk-crack $x --dictionary=$2 | tee -a pskcrack.out
+	fi
 done
 # Parsing results
 cat pskcrack.out | grep -v "Running" | grep -v "Ending" | grep -v "Starting" | tee -a ikebrute-results.txt
