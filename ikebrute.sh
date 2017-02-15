@@ -27,8 +27,6 @@ if [ -z "$aggressive" ]; then
 	echo "Aggressive Mode is not enabled"
 	exit 0
 fi
-# Cleans previous results
-rm -rf /opt/ikebrute/ikebrute-results.txt
 # Captures hashes
 clear
 echo "[*]  Capturing hashes"
@@ -56,8 +54,9 @@ done
 cat pskcrack.out | grep -v "Running" | grep -v "Ending" | grep -v "Starting" | tee -a ikebrute-results.txt
 # Cleanup files
 echo "[*]  Performing cleanup"
+rm -rf /opt/ikebrute/ikebrute-results.txt
 rm -rf /opt/ikebrute/*.hash
-rm -rf pskcrack.out
+rm -rf /opt/ikebrute/pskcrack.out
 #Complete
 echo "[*]  Complete"
 exit 0
