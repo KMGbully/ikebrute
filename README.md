@@ -1,7 +1,9 @@
 # ikebrute v1.1
 Simply runs through a wordlist of default/common group IDs and parses each hash to a separate file. Then it runs through the hashes with psk-crack using a wordlist mangled with john and hobo64.rule 
 </br></br>
-Usage:  ./ikebrute.sh [TARGET IP]
+Usage:  ./ikebrute.sh [TARGET IP] [/path/to/wordlist]
+</br>
+Wordlist default is psk-crack-dictionary
 </br></br>
 Requirements:  </br>
 1.  ike-scan</br>
