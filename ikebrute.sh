@@ -41,8 +41,8 @@ clear
 echo "[*]  Cracking hashes"
 for x in $(ls | grep hash); do
 	echo Testing: $x
-	john --rules=/opt/ikebrute/besthobo64.rule --wordlist=/opt/ikebrute/psk-crack-dictionary --stdout | psk-crack -d - $x
-	#psk-crack $x --dictionary=/usr/share/wordlists/rockyou.txt | tee -a pskcrack.out
+	#john --rules=/opt/ikebrute/besthobo64.rule --wordlist=/opt/ikebrute/psk-crack-dictionary --stdout | psk-crack -d - $x
+	psk-crack $x --dictionary=/opt/ikebrute/psk-crack-dictionary | tee -a pskcrack.out
 done
 # Parsing results
 cat pskcrack.out | grep -v "Running" | grep -v "Ending" | grep -v "Starting" | tee -a ikebrute-results.txt
